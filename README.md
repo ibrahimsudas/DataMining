@@ -1,35 +1,38 @@
-# WaveFunctionCollapse3D
- 
-This is a personal project about procedural generation using the Wave Function Collapse algorithm. Project also includes a script for detecting and labeling models with sockets for easier use.
+## Decision Tree Classification on the Iris Dataset
 
-## HOW TO USE ?
+This repository contains an implementation of a Decision Tree Classifier using the Iris dataset. The model classifies flowers into three species based on four features: sepal length, sepal width, petal length, and petal width. The classifier is trained on a portion of the dataset and evaluated on a separate test set. Additionally, the trained decision tree is visualized to show how it makes decisions.
 
-First be sure that your FBX file is in your Assets/Resources folder. Than in an empty scane attatch the "FindSockets.cs" script to an empty objects. Enter the FBX file name and all the seperate models will be listed in a JSON format and also script will create a Objects file inside the Resources folder. In the objects folder there will be seperate foldrs for all the different types of meshes. If you want to add a different variation for a module, add its mesh seperately to its corresponding folder.
+## Libraries Used
+Numpy: For numerical computations and array manipulation.
+Pandas: For data manipulation (though not directly used in the code, it can be useful for dataset handling).
+Scikit-learn (sklearn):
+For loading the Iris dataset.
+For splitting the data into training and test sets.
+For creating and evaluating the Decision Tree Classifier.
+Matplotlib: For visualizing the trained Decision Tree.
+## Dataset
+The Iris dataset is used, which contains 150 samples of Iris flowers, each belonging to one of three species:
+Setosa,
+Versicolor,
+Virginica
+The dataset consists of 4 features:
+Sepal length,
+Sepal width,
+Petal length,
+Petal width.
 
-If you wish to assign a different weight value to a certain module, be sure to add it as a gameobject with a MeshFilter component to the scane that your FindSocket folder is running and add a "PrototypePreferences.cs" script to it. With this script you can assign a weight value to the spesfic module. All the weights will be 1 by defult.
+## Steps
+# 1. Load the Dataset
+The Iris dataset is loaded using sklearn.datasets.load_iris().
 
-## MODELİNG
+# 2. Split the Data
+The dataset is divided into training and testing sets with an 80/20 split using train_test_split().
 
-Make sure to model all the desired parts within a 1x1x1 cube and all the vertices that will be connected should be positioned at the border of the cube. Algorithm labels the sides of the objects by checking the sides of an imaginary cube centered on the objects origin for vertices and labels them with socket names and matches them with eachother. Dont'forget to add an empty model for the empty space and also a model for the unseen underground part.
+# 3. Train the Model
+A Decision Tree Classifier (DecisionTreeClassifier) is trained using the training data.
 
-<img src="https://github.com/TolgaRodoplu/WaveFunctionCollapse3D/assets/60203949/63683956-ab0a-4817-bc5d-e1e8d4106b0a" width="450">
+# 4. Evaluate the Model
+The model is evaluated on the test set, and the accuracy is computed using accuracy_score(). The accuracy is then printed as a percentage.
 
-
-## GENERATİON PROCCESS 
-
-After all the modules are created and the json is set you can add the Generator script to a new scane and generate your structure.
-
-Generator script will have some values to be filled before generation.
-
-- DimX, DimY, DimZ is the X, Y ,Z dimensions of the area you want to generate.
-- Render Interval is the speed which the generation is shown (note that this feature can be changed so the script renders the objects at a different time. this is only added for the purpose of demonstration.)
-- Empty Mesh is the name of the empty mesh that represents empty space.
-- Underground Mesh is the name of the mesh that represents the underground parts.
-- Initilize Choice is the ID of the module which your desire to be the endge of the map. ( Can be calculated by counting the order of the mesh in the FBX file, multiply it by 4 and decrement it by 1)
-
-<img src="https://github.com/TolgaRodoplu/WaveFunctionCollapse3D/assets/60203949/0566c0b5-4f86-455b-bda6-074880c2e4eb" width="475">
-<img src="https://github.com/TolgaRodoplu/WaveFunctionCollapse3D/assets/60203949/a1e81542-da20-435c-8ce7-06a5d1a31188" width="450">
-<img src="https://github.com/TolgaRodoplu/WaveFunctionCollapse3D/assets/60203949/1fdb5e84-8364-4379-b46a-566577669c23" width="475">
-<img src="https://github.com/TolgaRodoplu/WaveFunctionCollapse3D/assets/60203949/60314582-450f-4866-bdcc-ada1d10a9e20" width="450" height="322">
-
-If you have further questions be sure to reachout to me from rodoplutolga@gmail.com
+# 5. Visualize the Decision Tree
+The trained Decision Tree is visualized using plot_tree() from sklearn.tree, showing the splits, features, and the decision-making process of the tree.
